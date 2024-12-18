@@ -1,0 +1,393 @@
+---
+import { getCollection } from 'astro:content';
+import background from '../assets/img/fondoa.webp';
+import CollectableComponent from './CollectableComponent.astro';
+import PuzzleComponent from './PuzzleComponent.astro';
+
+const itemsCollections = await getCollection('categories')
+
+console.log("items", itemsCollections)
+
+export const categories = [
+	{
+		"name": "Figuras a color",
+		"id": 1,
+		"size": 21
+	},
+	{
+		"name": "Figuras traslucidas",
+		"id": 2,
+		"size": 10
+	},
+	{
+		"name": "Candados",
+		"id": 3,
+		"size": 10
+	},
+	{
+		"name": "Caps",
+		"id": 4,
+		"size": 10
+	},
+	{
+		"name": "Rompecabezas",
+		"id": 5,
+		"size": 35
+	}
+];
+
+
+---
+<div id="wrapper" style={`background-image: url(${background.src});`}>
+	<div class="wrapper-checklist" data-categories={JSON.stringify(categories)}>
+		<h1>Categories</h1>}>
+		<div class="camera"></div>
+		<div id="clock"></div>
+		<div id="redCircle"></div>
+		<div class="container">
+			{
+				categories.map(category => {
+					
+					const { id, name, size } = category;
+					const filteredCollectables = itemsCollections.filter(collectable => collectable.data.category === id);
+
+					const additionalContent =
+        				id !== 5 ? (
+            			<div class={`item-collection-wrapper collection-${id}`}>
+                			{filteredCollectables.map(collectable => {
+								return (
+									<CollectableComponent collectable={collectable.data} />
+								);
+                			})}
+            			</div>
+        			) : (
+            			<div class="puzzle" id="Puzzle">
+							<!-- Logica sobre el Rompecabezas -->
+							{filteredCollectables.map(collectable => {
+								return (
+									<PuzzleComponent collectable={collectable.data} />
+								);
+                			})}
+						</div>
+        			);
+
+					return (
+						<>
+						<h2 class="title">{ name }</h2>
+						<p id={`col${id}`} data-categorie={id} data-size={size}></p>
+						<div class={`item-collecion-wrapper collection-${id}`}></div>
+						{additionalContent}
+						</>
+					);
+				})
+			}
+		</div>
+		<footer>
+			<div class="container">
+				<div class="madeby">
+					<div>
+						<p class="text-center">Made by: <br><a class="" href="https://brosvalley.com/"
+								target="_blank">BrosValley</a></p>
+					</div>
+					<div>
+						<p class="text-center">Art by: <br> Alda Jimenez</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</div>
+<style>
+	.wrapper {
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	.camera{
+		width: calc(100% - 2rem);
+		height: calc(100% - 2rem);
+		border: 1px solid #fff;
+		position: absolute;
+	}
+
+	.wrapper-checklist{
+		position: relative;
+		padding: 1rem;
+		min-height: 100svh;
+		overflow: hidden;
+		border: 2px solid #fff;
+	}
+
+	.container {
+		margin: auto;
+		padding: 0 0.5rem;
+	}
+
+	.text-center {
+		text-align: center;
+	}
+
+	#clock{
+		position: absolute;
+		right: 1.1rem;
+		top: 1.3rem;
+		color: #fff;
+	}
+
+	#redCircle{
+		position: absolute;
+		left: 1.3rem;
+		top: 1.3rem;
+		background-color: #F52955;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+	}
+
+
+	.title {
+		text-decoration: none;
+		font-weight: normal;
+		font-size: clamp(1rem, 2.5vw, 3rem);
+		font-family: sans-serif;
+		/* font-weight: 900; */
+		margin-bottom: 1rem;
+		color: #fff;
+		-webkit-text-stroke: 1px aqua;
+		-webkit-text-fill-color: transparent;
+		animation: glow-title 2s ease-in-out infinite alternate;
+		letter-spacing: 0.15rem;
+	}
+
+	.container > p{
+		color: #fff;
+		text-align: end;
+		margin-bottom: 2rem;
+		font-size: clamp(0.4rem, 2.5vw, 1.2rem);
+	}
+
+	@keyframes glow-title
+	{
+	from 
+	{
+		text-shadow: 0 0 10px aqua, 0 0 15px aqua;
+	}
+	to
+	{
+		text-shadow: 0 0 20px aqua;
+	}
+	}
+
+	.title:first-of-type {
+		margin-top: 3rem;
+	}
+
+	.title-wrapper{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+
+	.item-collection-wrapper {
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		gap: 0.3rem;
+		margin-bottom: 1.4rem;
+	}
+
+	.puzzle{
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		grid-template-rows: repeat(5, 1fr);
+
+		img{
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+			
+			
+		}
+	
+	}
+
+	
+
+
+	.madeby{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		color: #fff;
+	}
+
+	footer p{
+		font-size: clamp(1rem, 2.5vw, 1.5rem);
+	}
+	@media (width >=576px) {
+		.container {
+			max-width: 540px;
+		}
+	}
+
+	@media (width >=768px) {
+		.container {
+			max-width: 720px;
+		}
+
+		.item-collection-wrapper {
+			gap: 1.8rem;
+		}
+	}
+
+	@media (width >=992px) {
+		.container {
+			max-width: 960px;
+		}
+		.item-collection-wrapper {
+			gap: 3rem;
+		}
+	}
+
+	@media (width >=1200px) {
+		.container {
+			max-width: 1140px;
+		}
+
+	}
+
+	@media (width >=1400px) {
+		.container {
+			max-width: 1320px;
+		}
+	}
+</style>
+<script>
+	const cards = document.querySelectorAll('.item');
+	let idsOwned = localStorage.getItem('owned') ? JSON.parse(localStorage.getItem('owned')) : [];
+
+	cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            card.classList.toggle('owned');
+            let collectableID = card.dataset.id;
+            let isOwned = idsOwned.includes(collectableID);
+
+            if (!isOwned) {
+                idsOwned.push(collectableID);
+            } else {
+                idsOwned = idsOwned.filter(id => id !== collectableID);
+            }
+
+            localStorage.setItem('owned', JSON.stringify(idsOwned));
+            RefreshCollected()
+        });
+    });
+
+	const ItemsPuzzle = document.querySelectorAll('.item_puzzle');
+
+	ItemsPuzzle.forEach(item => {
+		item.addEventListener('click', (e) => {
+			console.log("clickxd")
+			item.classList.toggle('owned')
+			// console.log('puzzle')
+			// let itemsLocalStorage 
+
+			let id = parseInt(item.getAttribute('data-id'))
+			if(idsOwned.includes(id)){
+				console.log('si lo incluye')
+				idsOwned = idsOwned.filter(theId => theId != id)
+			}else{
+				idsOwned.push(id)
+			}
+			// console.log('id',id)
+			// console.log(idsOwned)
+
+			localStorage.setItem("owned", JSON.stringify(idsOwned));
+			let collectionNumber = item.closest('div')
+			console.log('colnumber',collectionNumber)
+			RefreshCollected()
+		})
+	})
+
+	function RefreshCollected() {
+        const collections = document.querySelectorAll("[data-categorie]")
+		
+		cards.forEach((card) => {
+			let collectableID = card.dataset.id;
+            let isOwned = idsOwned.includes(collectableID);
+			
+			if (isOwned) {
+				card.classList.add("owned");
+			} else {
+				card.classList.remove("owned");
+			}
+		})
+		
+		collections.forEach((collection) => {
+			let sizeCollection = collection.dataset.size;
+			let collectionID = collection.dataset.categorie;
+			let colOwned = document.querySelectorAll(`.collection-${collectionID} .item.owned`)
+			
+			collection.innerHTML = `${colOwned.length} / ${sizeCollection}`
+
+			if (colOwned.length == sizeCollection) {
+                fireWorks()    
+            }
+		});
+    }
+
+	function showTime(){
+    	let date = new Date();
+    	let h = date.getHours(); // 0 - 23
+    
+    	let session = "AM";
+    
+	    if(h == 0){
+    	    h = 12;
+    	}
+    
+    	if(h > 12){
+        	h = h - 12;
+        	session = "PM";
+    	}
+    
+    	h = (h < 10) ? "0" + h : h;
+    
+    
+    	let time = h + " " + session;
+		document.getElementById("clock").innerText = time;
+    
+    	setTimeout(showTime, 1000);
+	}
+
+	function fireWorks() {
+        var duration = 7 * 1000;
+        var animationEnd = Date.now() + duration;
+        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        var interval = setInterval(function() {
+        var timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+
+        var particleCount = 50 * (timeLeft / duration);
+        // since particles fall down, start a bit higher than random
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+        }, 250);
+    }
+
+	RefreshCollected();
+	//showTime();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>

@@ -1,0 +1,28 @@
+---
+// import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
+const { collectable } = Astro.props;
+---
+
+<div class="item_puzzle" data-id={collectable.id}>
+    <div class="imagen-fondo">
+        <Image
+            src={collectable.srcColor}
+            alt="descriptive text"
+            width="200"
+            height="150"
+        />
+    </div>
+</div>
+<style>
+    .item_puzzle {
+        filter: grayscale(1);
+        cursor: pointer;
+        border: 1px solid #fff;
+    }
+
+    .item_puzzle.owned {
+        filter: grayscale(0);
+        border: 2.5px solid yellow;
+    }
+</style>

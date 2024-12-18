@@ -1,0 +1,247 @@
+[
+    {
+        "id": 1,
+        "srcColor": "../assets/images/bebe_feo.png",
+        "category": 1
+    },
+    {
+        "id": 2,
+        "srcColor": "../assets/images/toy_bonnie.png",
+        "category": 1
+    },
+    {
+        "id": 3,
+        "srcColor": "../assets/images/g_freddy.png",
+        "category": 1
+    },
+    {
+        "id": 4,
+        "srcColor": "../assets/images/funtime_foxy.png",
+        "category": 1
+    },
+    {
+        "id": 5,
+        "srcColor": "../assets/images/foxy.png",
+        "category": 1
+    },
+    {
+        "id": 6,
+        "srcColor": "../assets/images/circus_baby.png",
+        "category": 1
+    },
+    {
+        "id": 7,
+        "srcColor": "../assets/images/chica.png",
+        "category": 1
+    },
+    {
+        "id": 101,
+        "srcColor": "../assets/images/bebe_feo_tras.png",
+        "category": 2
+    },
+    {
+        "id": 102,
+        "srcColor": "../assets/images/toy_bonnie_tras.png",
+        "category": 2
+    },
+    {
+        "id": 103,
+        "srcColor": "../assets/images/g_freddy_tras.png",
+        "category": 2
+    },
+    {
+        "id": 104,
+        "srcColor": "../assets/images/funtime_foxy_tras.png",
+        "category": 2
+    },
+    {
+        "id": 105,
+        "srcColor": "../assets/images/foxy_tras.png",
+        "category": 2
+    },
+    {
+        "id": 106,
+        "srcColor": "../assets/images/circus_baby_tras.png",
+        "category": 2
+    },
+    {
+        "id": 107,
+        "srcColor": "../assets/images/freddy_tras.png",
+        "category": 2
+    },
+    {
+        "id": 1001,
+        "srcColor": "../assets/images/row-1-column-1.png",
+        "category": 5
+    },
+    {
+        "id": 1002,
+        "srcColor": "../assets/images/row-1-column-2.png",
+        "category": 5
+    },
+    {
+        "id": 1003,
+        "srcColor": "../assets/images/row-1-column-3.png",
+        "category": 5
+    },
+    {
+        "id": 1004,
+        "srcColor": "../assets/images/row-1-column-4.png",
+        "category": 5
+    },
+    {
+        "id": 1005,
+        "srcColor": "../assets/images/row-1-column-5.png",
+        "category": 5
+    },
+    {
+        "id": 1006,
+        "srcColor": "../assets/images/row-1-column-6.png",
+        "category": 5
+    },
+    {
+        "id": 1007,
+        "srcColor": "../assets/images/row-1-column-7.png",
+        "category": 5
+    },
+    {
+        "id": 1008,
+        "srcColor": "../assets/images/row-2-column-1.png",
+        "category": 5
+    },
+    {
+        "id": 1009,
+        "srcColor": "../assets/images/row-2-column-2.png",
+        "category": 5
+    },
+    {
+        "id": 1010,
+        "srcColor": "../assets/images/row-2-column-3.png",
+        "category": 5
+    },
+    {
+        "id": 1011,
+        "srcColor": "../assets/images/row-2-column-4.png",
+        "category": 5
+    },
+    {
+        "id": 1012,
+        "srcColor": "../assets/images/row-2-column-5.png",
+        "category": 5
+    },
+    {
+        "id": 1013,
+        "srcColor": "../assets/images/row-2-column-6.png",
+        "category": 5
+    },
+    {
+        "id": 1014,
+        "srcColor": "../assets/images/row-2-column-7.png",
+        "category": 5
+    },
+    {
+        "id": 1015,
+        "srcColor": "../assets/images/row-3-column-1.png",
+        "category": 5
+    },
+    {
+        "id": 1016,
+        "srcColor": "../assets/images/row-3-column-2.png",
+        "category": 5
+    },
+    {
+        "id": 1017,
+        "srcColor": "../assets/images/row-3-column-3.png",
+        "category": 5
+    },
+    {
+        "id": 1018,
+        "srcColor": "../assets/images/row-3-column-4.png",
+        "category": 5
+    },
+    {
+        "id": 1019,
+        "srcColor": "../assets/images/row-3-column-5.png",
+        "category": 5
+    },
+    {
+        "id": 1020,
+        "srcColor": "../assets/images/row-3-column-6.png",
+        "category": 5
+    },
+    {
+        "id": 1021,
+        "srcColor": "../assets/images/row-3-column-7.png",
+        "category": 5
+    },
+    {
+        "id": 1022,
+        "srcColor": "../assets/images/row-4-column-1.png",
+        "category": 5
+    },
+    {
+        "id": 1023,
+        "srcColor": "../assets/images/row-4-column-2.png",
+        "category": 5
+    },
+    {
+        "id": 1024,
+        "srcColor": "../assets/images/row-4-column-3.png",
+        "category": 5
+    },
+    {
+        "id": 1025,
+        "srcColor": "../assets/images/row-4-column-4.png",
+        "category": 5
+    },
+    {
+        "id": 1026,
+        "srcColor": "../assets/images/row-4-column-5.png",
+        "category": 5
+    },
+    {
+        "id": 1027,
+        "srcColor": "../assets/images/row-4-column-6.png",
+        "category": 5
+    },
+    {
+        "id": 1028,
+        "srcColor": "../assets/images/row-4-column-7.png",
+        "category": 5
+    },
+    {
+        "id": 1029,
+        "srcColor": "../assets/images/row-5-column-1.png",
+        "category": 5
+    },
+    {
+        "id": 1030,
+        "srcColor": "../assets/images/row-5-column-2.png",
+        "category": 5
+    },
+    {
+        "id": 1031,
+        "srcColor": "../assets/images/row-5-column-3.png",
+        "category": 5
+    },
+    {
+        "id": 1032,
+        "srcColor": "../assets/images/row-5-column-4.png",
+        "category": 5
+    },
+    {
+        "id": 1033,
+        "srcColor": "../assets/images/row-5-column-5.png",
+        "category": 5
+    },
+    {
+        "id": 1034,
+        "srcColor": "../assets/images/row-5-column-6.png",
+        "category": 5
+    },
+    {
+        "id": 1035,
+        "srcColor": "../assets/images/row-5-column-7.png",
+        "category": 5
+    }
+]

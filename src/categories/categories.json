@@ -1,0 +1,217 @@
+[
+    {
+        "id": 1,
+        "srcColor": "bebe_feo",
+        "category": 1
+    },
+    {
+        "id": 2,
+        "srcColor": "toy_bonnie",
+        "category": 1
+    },
+    {
+        "id": 3,
+        "srcColor": "g_freddy",
+        "category": 1
+    },
+    {
+        "id": 4,
+        "srcColor": "funtime_foxy",
+        "category": 1
+    },
+    {
+        "id": 5,
+        "srcColor": "foxy",
+        "category": 1
+    },
+    {
+        "id": 6,
+        "srcColor": "circus_baby",
+        "category": 1
+    },
+    {
+        "id": 7,
+        "srcColor": "chica",
+        "category": 1
+    },
+    {
+        "id": 101,
+        "src": "bob_tras_negro",
+        "srcColor": "bob_tras_color",
+        "category": 2
+    },
+    {
+        "id": 102,
+        "src": "plankton_tras_negro",
+        "srcColor": "plankton_tras_color",
+        "category": 2
+    },
+    {
+        "id": 103,
+        "src": "don_cangrejo_tras_negro",
+        "srcColor": "don_cangrejo_tras_color",
+        "category": 2
+    },
+    {
+        "id": 104,
+        "src": "anchoa_tras_negro",
+        "srcColor": "anchoa_tras_color",
+        "category": 2
+    },
+    {
+        "id": 105,
+        "src": "perlita_tras_negro",
+        "srcColor": "perlita_tras_color",
+        "category": 2
+    },
+    {
+        "id": 106,
+        "src": "cala_tras_negro",
+        "srcColor": "cala_tras_color",
+        "category": 2
+    },
+    {
+        "id": 107,
+        "src": "holandes_tras_negro",
+        "srcColor": "holandes_tras_color",
+        "category": 2
+    },
+    {
+        "id": 108,
+        "src": "gary_tras_negro",
+        "srcColor": "gary_tras_color",
+        "category": 2
+    },
+    {
+        "id": 109,
+        "src": "abuela_tras_negro",
+        "srcColor": "abuela_tras_color",
+        "category": 2
+    },
+    {
+        "id": 110,
+        "src": "patricio_tras_negro",
+        "srcColor": "patricio_tras_color",
+        "category": 2
+    },
+    {
+        "id": 201,
+        "src": "bob_tras_negro",
+        "srcColor": "c_bob",
+        "category": 3
+    },
+    {
+        "id": 202,
+        "src": "plankton_tras_negro",
+        "srcColor": "c_arenita",
+        "category": 3
+    },
+    {
+        "id": 203,
+        "src": "don_cangrejo_tras_negro",
+        "srcColor": "c_bob_pat_gary",
+        "category": 3
+    },
+    {
+        "id": 204,
+        "src": "anchoa_tras_negro",
+        "srcColor": "c_calamardo",
+        "category": 3
+    },
+    {
+        "id": 205,
+        "src": "perlita_tras_negro",
+        "srcColor": "c_don_cangrejo",
+        "category": 3
+    },
+    {
+        "id": 206,
+        "src": "cala_tras_negro",
+        "srcColor": "c_imaginacion",
+        "category": 3
+    },
+    {
+        "id": 207,
+        "src": "holandes_tras_negro",
+        "srcColor": "c_patricio",
+        "category": 3
+    },
+    {
+        "id": 208,
+        "src": "gary_tras_negro",
+        "srcColor": "c_perlita",
+        "category": 3
+    },
+    {
+        "id": 209,
+        "src": "abuela_tras_negro",
+        "srcColor": "c_plankton",
+        "category": 3
+    },
+    {
+        "id": 210,
+        "src": "patricio_tras_negro",
+        "srcColor": "c_todos",
+        "category": 3
+    },
+    {
+        "id": 301,
+        "src": "bob_tras_negro",
+        "srcColor": "cap_calamardo_color",
+        "category": 4
+    },
+    {
+        "id": 302,
+        "src": "plankton_tras_negro",
+        "srcColor": "cap_friends",
+        "category": 4
+    },
+    {
+        "id": 303,
+        "src": "don_cangrejo_tras_negro",
+        "srcColor": "cap_carteles",
+        "category": 4
+    },
+    {
+        "id": 304,
+        "src": "anchoa_tras_negro",
+        "srcColor": "cap_plankton",
+        "category": 4
+    },
+    {
+        "id": 305,
+        "src": "perlita_tras_negro",
+        "srcColor": "cap_flotando",
+        "category": 4
+    },
+    {
+        "id": 306,
+        "src": "cala_tras_negro",
+        "srcColor": "cap_girando",
+        "category": 4
+    },
+    {
+        "id": 307,
+        "src": "holandes_tras_negro",
+        "srcColor": "cap_rainbow",
+        "category": 4
+    },
+    {
+        "id": 308,
+        "src": "gary_tras_negro",
+        "srcColor": "cap_friends2",
+        "category": 4
+    },
+    {
+        "id": 309,
+        "src": "abuela_tras_negro",
+        "srcColor": "cap_abajo",
+        "category": 4
+    },
+    {
+        "id": 310,
+        "src": "abuela_tras_negro",
+        "srcColor": "cap_bob_main",
+        "category": 4
+    }
+]

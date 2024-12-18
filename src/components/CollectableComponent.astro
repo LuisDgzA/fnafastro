@@ -1,0 +1,144 @@
+---
+// import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
+const { collectable } = Astro.props;
+
+console.log(collectable)
+---
+
+<div class="item" data-id={collectable.id} data-col={collectable.category}>
+	<img class="noise" src="../src/assets/img/bg.png" />
+	<img class="bateria" src="../src/assets/img/Vector.webp" />
+	<img class="bateria_full" src="../src/assets/img/Group.webp" />
+	<div class="recording"></div>
+	<div class="imagen-fondo">
+		<Image
+			src={collectable.srcColor}
+			alt="descriptive text"
+			width="200"
+			height="150"
+		/>
+	</div>
+</div>
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	.item {
+		width: 3.9rem;
+		height: 3.9rem;
+		display: grid;
+		place-items: center;
+		cursor: pointer;
+		position: relative;
+		border: 1px solid #fff;
+		user-select: none;
+		.bateria_full {
+			display: none;
+		}
+		.bateria {
+			display: block;
+		}
+	}
+
+	.item img::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		box-shadow: inset 0 20px 30px rgb(230, 230, 230);
+	}
+
+	.item.owned {
+		.imagen-fondo img {
+			filter: drop-shadow(0 0 0.75rem #e4e132);
+		}
+
+		.noise {
+			opacity: 0;
+		}
+
+		.bateria {
+			display: none;
+		}
+		.bateria_full {
+			display: block;
+		}
+		.recording {
+			display: block;
+		}
+	}
+
+	.item .noise {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.imagen-fondo {
+		width: 100%;
+		height: 100%;
+		user-select: none;
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		/* display: grid;
+		place-content: center; */
+
+		/* background: var(--bgimg) center center no-repeat;
+		background-size: contain; */
+	}
+
+	.imagen-fondo img {
+		/* position: absolute; */
+		width: 70%;
+		height: 70%;
+		filter: grayscale(1);
+		object-fit: contain;
+	}
+
+	.recording {
+		width: 0.4rem;
+		height: 0.4rem;
+		background-color: #f52955;
+		position: absolute;
+		left: 1px;
+		top: 0.8rem;
+		border-radius: 50%;
+		display: none;
+	}
+
+	.bateria,
+	.bateria_full {
+		position: absolute;
+		width: 0.8rem;
+		height: auto;
+		left: 1px;
+		top: 1px;
+	}
+
+	@media (width >=768px) {
+		.item {
+			width: 6rem;
+			height: 6rem;
+		}
+	}
+
+	@media (width >=992px) {
+		.bateria,
+		.bateria_full {
+			position: absolute;
+			width: 1.5rem;
+		}
+		.recording {
+			top: 1.5rem;
+			width: 0.7rem;
+			height: 0.7rem;
+		}
+		.item {
+			width: 9rem;
+			height: 9rem;
+		}
+	}
+</style>
