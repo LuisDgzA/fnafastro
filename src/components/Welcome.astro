@@ -54,12 +54,30 @@ export const categories = [
 					const additionalContent =
         				id !== 5 ? (
 							
-								<div class={`item-collection-wrapper collection-${id}`}>
-									{filteredCollectables.map(collectable => {
-										return (
-											<CollectableComponent collectable={collectable.data} />
-										);
-									})}
+								<div class={`collection-${id}`}>
+									<h2 class="title">{ name }</h2>
+									<div class="item-collection-wrapper">
+										{filteredCollectables.map(collectable => {
+											return (
+												
+												<CollectableComponent collectable={collectable.data} />
+											);
+										})}
+									</div>
+									<div class="container">
+										<div class="madeby">
+											<div>
+												<a class="" href="https://brosvalley.com/" target="_blank">
+													<img src="../src/assets/images/footer.png" alt="hecho_por_brosvalley">
+												</a>
+											</div>
+											<div>
+												<p class="text-center">Ilustraciones por:</p>
+												<br>
+												<p class="text-center">Alda Jiménez</p>
+											</div>
+										</div>
+									</div>
 								</div>
 							
         			) : (
@@ -75,37 +93,15 @@ export const categories = [
 
 					return (
 						<div class="divider" data-col={id}>
-							<h2 class="title">{ name }</h2>
-							<div class="btn-container">
-								<button class="download" data-col={id}>
-									<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-										<path d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" stroke-linecap="round" stroke-linejoin="round"></path>
-									</svg>
-								</button>
-							</div>							
-							<p class="counter" id={`col${id}`} data-categorie={id} data-size={size}></p>						
+														
 							{additionalContent}
+							
 						</div>
 					);
 				})
 			}
 		</div>
-		<footer>
-			<div class="container">
-				<div class="madeby">
-					<div>
-						<a class="" href="https://brosvalley.com/" target="_blank">
-							<img src="../src/assets/images/footer.png" alt="hecho_por_brosvalley">
-						</a>
-					</div>
-					<div>
-						<p class="text-center">Ilustraciones por:</p>
-						<br>
-						<p class="text-center">Alda Jiménez</p>
-					</div>
-				</div>
-			</div>
-		</footer>
+		
 	</div>
 </div>
 <div class="loader__container">
@@ -359,188 +355,4 @@ export const categories = [
 		}
 	}
 </style>
-<script>
-	const cards = document.querySelectorAll('.item');
-	let idsOwned = localStorage.getItem('owned') ? JSON.parse(localStorage.getItem('owned')) : [];
-	let DownloadButtons = document.querySelectorAll(".download");
 
-	DownloadButtons.forEach((btn) => {
-		btn.addEventListener("click", async () => {
-			toggleLoader();
-
-			let collectionNumber = btn.getAttribute("data-col");
-			let isPuzzle = collectionNumber == "5";
-			let DivsOwned = document.querySelectorAll(`${isPuzzle ? ".item_puzzle" : ".item"}.owned[data-col="${collectionNumber}"]`);
-        	let stringIds = Array.from(DivsOwned, div => parseInt(div.getAttribute("data-id"))).join();
-			
-			try {
-				const response = await fetch(`http://localhost:3000/screenshot?ids=${stringIds}&col=${collectionNumber}`);
-    			if (!response.ok) {
-        			throw new Error(`Error en la solicitud: ${response.status}`);
-    			}
-
-    			const data = await response.text();
-
-		    	const base64Match = data.match(/data:image\/png;base64,([a-zA-Z0-9+/=]+)/);
-    			if (!base64Match) {
-        			throw new Error('El formato de la respuesta no contiene una imagen válida.');
-				}
-
-    			const link = document.createElement('a');
-    			const base64Image = base64Match[0];
-
-    			link.href = base64Image;
-    			link.download = 'screenshot.png';
-    			link.click();
-				toggleLoader();
-			} catch (error) {
-    			toggleLoader();
-    			console.error('Ocurrió un error:', error.message);
-    			alert('Hubo un problema al obtener la captura de pantalla. Por favor, inténtelo de nuevo más tarde.');
-			}
-		});
-	});
-	
-
-	cards.forEach((card) => {
-        card.addEventListener("click", () => {
-            card.classList.toggle('owned');
-            let collectableID = card.dataset.id;
-            let isOwned = idsOwned.includes(collectableID);
-
-            if (!isOwned) {
-                idsOwned.push(collectableID);
-            } else {
-                idsOwned = idsOwned.filter(id => id !== collectableID);
-            }
-
-            localStorage.setItem('owned', JSON.stringify(idsOwned));
-			let collectionNumber = card.closest('div').getAttribute('data-col');
-            RefreshCollected(collectionNumber)
-        });
-    });
-
-	const ItemsPuzzle = document.querySelectorAll('.item_puzzle');
-
-	ItemsPuzzle.forEach(item => {
-		item.addEventListener('click', (e) => {
-			console.log("clickxd")
-			item.classList.toggle('owned')
-			// console.log('puzzle')
-			// let itemsLocalStorage 
-
-			let id = parseInt(item.getAttribute('data-id'))
-			if(idsOwned.includes(id)){
-				console.log('si lo incluye')
-				idsOwned = idsOwned.filter(theId => theId != id)
-			}else{
-				idsOwned.push(id)
-			}
-			// console.log('id',id)
-			// console.log(idsOwned)
-
-			localStorage.setItem("owned", JSON.stringify(idsOwned));
-			let collectionNumber = item.getAttribute('data-col')
-			console.log('colnumber',collectionNumber)
-			RefreshCollected(collectionNumber)
-		})
-	})
-
-	function RefreshCollected(collectionNumber = 0) {
-        const collections = document.querySelectorAll("[data-categorie]")
-		
-		cards.forEach((card) => {
-			let collectableID = card.dataset.id;
-            let isOwned = idsOwned.includes(collectableID);
-			
-			if (isOwned) {
-				card.classList.add("owned");
-			} else {
-				card.classList.remove("owned");
-			}
-		})
-		console.log(collectionNumber)
-		
-		collections.forEach((collection) => {
-			let sizeCollection = document.querySelectorAll(`.collection-${collection.dataset.categorie} .item`).length;
-			let collectionID = collection.dataset.categorie;
-
-			if(collectionNumber == 5){
-
-				console.log(collectionID)
-				console.log(sizeCollection)
-			}
-			let colOwned;
-			if(collectionNumber != 5)
-				colOwned = document.querySelectorAll(`.collection-${collectionID} .item.owned`)
-			else
-				colOwned = document.querySelectorAll(`.item_puzzle.owned`)
-
-			collection.innerHTML = `${colOwned.length} / ${sizeCollection}`
-			if(collectionNumber == collectionID && colOwned.length == sizeCollection) 
-			{
-                fireWorks()    
-            }
-		});
-    }
-
-	function showTime(){
-    	let date = new Date();
-    	let h = date.getHours(); // 0 - 23
-    
-    	let session = "AM";
-    
-	    if(h == 0){
-    	    h = 12;
-    	}
-    
-    	if(h > 12){
-        	h = h - 12;
-        	session = "PM";
-    	}
-    
-    	h = (h < 10) ? "0" + h : h;
-    
-    
-    	let time = h + " " + session;
-		document.getElementById("clock").innerText = time;
-    
-    	setTimeout(showTime, 1000);
-	}
-
-	function fireWorks() {
-        var duration = 7 * 1000;
-        var animationEnd = Date.now() + duration;
-        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-        function randomInRange(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-        var interval = setInterval(function() {
-        var timeLeft = animationEnd - Date.now();
-
-        if (timeLeft <= 0) {
-            return clearInterval(interval);
-        }
-
-        var particleCount = 50 * (timeLeft / duration);
-        // since particles fall down, start a bit higher than random
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
-        }, 250);
-    }
-
-	function toggleLoader(){
-		const loader = document.querySelector(".loader__container"),
-		body = document.body;
-
-		loader.classList.toggle("loader--active")
-		body.classList.toggle("loader--is--active")
-
-	}
-
-	RefreshCollected();
-	//showTime();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
