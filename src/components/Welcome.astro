@@ -6,41 +6,41 @@ import PuzzleComponent from './PuzzleComponent.astro';
 
 const itemsCollections = await getCollection('categories')
 
-console.log("items", itemsCollections)
+console.log("Background", background.src)
 
 export const categories = [
 	{
 		"name": "Figuras a color",
-		"id": 1,
-		"size": 21
+		"id": 1,		
 	},
 	{
 		"name": "Figuras traslucidas",
-		"id": 2,
-		"size": 10
+		"id": 2,		
 	},
 	{
-		"name": "Candados",
-		"id": 3,
-		"size": 10
+		"name": "Llaveros",
+		"id": 3,		
 	},
 	{
-		"name": "Caps",
-		"id": 4,
-		"size": 10
+		"name": "Clips",
+		"id": 4,		
+	},
+	{
+		"name": "Ventosas",
+		"id": 6,		
 	},
 	{
 		"name": "Rompecabezas",
-		"id": 5,
-		"size": 35
+		"id": 5,		
 	}
+	
 ];
 
 
 ---
 <div id="wrapper" style={`background-image: url(${background.src});`}>
 	<div class="wrapper-checklist" data-categories={JSON.stringify(categories)}>
-		<h1>Categories</h1>}>
+		
 		<div class="camera"></div>
 		<div id="clock"></div>
 		<div id="redCircle"></div>
@@ -53,13 +53,15 @@ export const categories = [
 
 					const additionalContent =
         				id !== 5 ? (
-            			<div class={`item-collection-wrapper collection-${id}`}>
-                			{filteredCollectables.map(collectable => {
-								return (
-									<CollectableComponent collectable={collectable.data} />
-								);
-                			})}
-            			</div>
+							
+								<div class={`item-collection-wrapper collection-${id}`}>
+									{filteredCollectables.map(collectable => {
+										return (
+											<CollectableComponent collectable={collectable.data} />
+										);
+									})}
+								</div>
+							
         			) : (
             			<div class="puzzle" id="Puzzle">
 							<!-- Logica sobre el Rompecabezas -->
@@ -72,12 +74,18 @@ export const categories = [
         			);
 
 					return (
-						<>
-						<h2 class="title">{ name }</h2>
-						<p id={`col${id}`} data-categorie={id} data-size={size}></p>
-						<div class={`item-collecion-wrapper collection-${id}`}></div>
-						{additionalContent}
-						</>
+						<div class="divider" data-col={id}>
+							<h2 class="title">{ name }</h2>
+							<div class="btn-container">
+								<button class="download" data-col={id}>
+									<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</button>
+							</div>							
+							<p class="counter" id={`col${id}`} data-categorie={id} data-size={size}></p>						
+							{additionalContent}
+						</div>
 					);
 				})
 			}
@@ -86,15 +94,31 @@ export const categories = [
 			<div class="container">
 				<div class="madeby">
 					<div>
-						<p class="text-center">Made by: <br><a class="" href="https://brosvalley.com/"
-								target="_blank">BrosValley</a></p>
+						<a class="" href="https://brosvalley.com/" target="_blank">
+							<img src="../src/assets/images/footer.png" alt="hecho_por_brosvalley">
+						</a>
 					</div>
 					<div>
-						<p class="text-center">Art by: <br> Alda Jimenez</p>
+						<p class="text-center">Ilustraciones por:</p>
+						<br>
+						<p class="text-center">Alda Jiménez</p>
 					</div>
 				</div>
 			</div>
 		</footer>
+	</div>
+</div>
+<div class="loader__container">
+	<div class="lds-grid">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
 	</div>
 </div>
 <style>
@@ -152,14 +176,26 @@ export const categories = [
 		text-decoration: none;
 		font-weight: normal;
 		font-size: clamp(1rem, 2.5vw, 3rem);
-		font-family: sans-serif;
-		/* font-weight: 900; */
+		font-family: 'Monserrat', sans-serif;
+		font-weight: 700;
 		margin-bottom: 1rem;
 		color: #fff;
-		-webkit-text-stroke: 1px aqua;
+		-webkit-text-stroke: 1px #FF9FBE;
 		-webkit-text-fill-color: transparent;
 		animation: glow-title 2s ease-in-out infinite alternate;
 		letter-spacing: 0.15rem;
+	}
+
+	@keyframes glow-title
+	{
+		from 
+		{
+			text-shadow: 0 0 20px #FF9FBE;
+		}
+		to
+		{
+			text-shadow: 0 0 10px #FF9FBE, 0 0 15px #FF9FBE;
+		}
 	}
 
 	.container > p{
@@ -169,17 +205,7 @@ export const categories = [
 		font-size: clamp(0.4rem, 2.5vw, 1.2rem);
 	}
 
-	@keyframes glow-title
-	{
-	from 
-	{
-		text-shadow: 0 0 10px aqua, 0 0 15px aqua;
-	}
-	to
-	{
-		text-shadow: 0 0 20px aqua;
-	}
-	}
+	
 
 	.title:first-of-type {
 		margin-top: 3rem;
@@ -191,6 +217,47 @@ export const categories = [
 		justify-content: center;
 	}
 
+	.btn-container{
+		width: 100%;
+		display: flex;
+		justify-content: start;
+	}
+
+	.download{
+		
+		font-family: 'Monserrat', sans-serif;
+		position: relative;
+		top: 0;
+		cursor: pointer;
+		text-decoration: none !important;
+		outline: none !important;    
+		letter-spacing: .1em;
+		text-shadow: 2px 2px 1px #0066a2, -2px 2px 1px #0066a2, 2px -2px 1px #0066a2, -2px -2px 1px #0066a2, 0px 2px 1px #0066a2, 0px -2px 1px #0066a2, 0px 4px 1px #004a87, 2px 4px 1px #004a87, -2px 4px 1px #004a87;
+		border: none;
+		margin: 15px 15px 30px;
+		background: repeating-linear-gradient(45deg, #3ebbf7, #3ebbf7 5px, #45b1f4 5px, #45b1f4 10px);
+		border-bottom: 3px solid rgba(16, 91, 146, 0.5);
+		border-top: 3px solid rgba(255, 255, 255, .3);
+		color: #fff !important;
+		border-radius: 8px;
+		padding: 0.3rem 0.6rem;
+		box-shadow: 0 6px 0 #266b91, 0 6px 1px 1px rgba(0, 0, 0, .3), 0 8px 0 5px #12517d, 0 10px 0 5px #1a6b9a, 0 13px 0 5px #0c405e, 0 13px 1px 6px rgba(0, 0, 0, .3)
+	}
+
+	.download:hover{
+		top: 2px;
+		box-shadow: 0 4px 0 #266b91, 0 4px 1px 1px rgba(0, 0, 0, .3), 0 6px 0 5px #12517d, 0 8px 0 5px #1a6b9a, 0 11px 0 5px #0c405e, 0 11px 1px 6px rgba(0, 0, 0, .3)
+	}
+
+	.download svg{
+		width: 1.5rem;
+	}
+
+	.counter{
+		color: #fff;
+		text-align: end;
+		margin-bottom: 1rem;
+	}
 
 	.item-collection-wrapper {
 		display: flex;
@@ -215,19 +282,45 @@ export const categories = [
 	
 	}
 
-	
-
-
 	.madeby{
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
 		color: #fff;
+		margin-top: 3rem;
+		position: relative;
+		z-index: 100;
+		flex-wrap: wrap-reverse;
+		gap: 2rem;
+
+		p{
+			font-size: 1rem;
+			margin: 0;
+		}
 	}
 
-	footer p{
-		font-size: clamp(1rem, 2.5vw, 1.5rem);
+	.loader__container.loader--active {
+		display: grid;
 	}
+
+	.loader__container {
+		position: fixed;
+		width: 100%;
+		/* height: 100svh; */
+		background-color: rgba(10, 10, 10, 0.7);
+		z-index: 2000;
+		display: grid;
+		place-content: center;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		display: none;
+		place-content: center;
+	}
+	/* footer p{
+		font-size: clamp(1rem, 2.5vw, 1.5rem);
+	} */
 	@media (width >=576px) {
 		.container {
 			max-width: 540px;
@@ -269,6 +362,45 @@ export const categories = [
 <script>
 	const cards = document.querySelectorAll('.item');
 	let idsOwned = localStorage.getItem('owned') ? JSON.parse(localStorage.getItem('owned')) : [];
+	let DownloadButtons = document.querySelectorAll(".download");
+
+	DownloadButtons.forEach((btn) => {
+		btn.addEventListener("click", async () => {
+			toggleLoader();
+
+			let collectionNumber = btn.getAttribute("data-col");
+			let isPuzzle = collectionNumber == "5";
+			let DivsOwned = document.querySelectorAll(`${isPuzzle ? ".item_puzzle" : ".item"}.owned[data-col="${collectionNumber}"]`);
+        	let stringIds = Array.from(DivsOwned, div => parseInt(div.getAttribute("data-id"))).join();
+			
+			try {
+				const response = await fetch(`http://localhost:3000/screenshot?ids=${stringIds}&col=${collectionNumber}`);
+    			if (!response.ok) {
+        			throw new Error(`Error en la solicitud: ${response.status}`);
+    			}
+
+    			const data = await response.text();
+
+		    	const base64Match = data.match(/data:image\/png;base64,([a-zA-Z0-9+/=]+)/);
+    			if (!base64Match) {
+        			throw new Error('El formato de la respuesta no contiene una imagen válida.');
+				}
+
+    			const link = document.createElement('a');
+    			const base64Image = base64Match[0];
+
+    			link.href = base64Image;
+    			link.download = 'screenshot.png';
+    			link.click();
+				toggleLoader();
+			} catch (error) {
+    			toggleLoader();
+    			console.error('Ocurrió un error:', error.message);
+    			alert('Hubo un problema al obtener la captura de pantalla. Por favor, inténtelo de nuevo más tarde.');
+			}
+		});
+	});
+	
 
 	cards.forEach((card) => {
         card.addEventListener("click", () => {
@@ -283,7 +415,8 @@ export const categories = [
             }
 
             localStorage.setItem('owned', JSON.stringify(idsOwned));
-            RefreshCollected()
+			let collectionNumber = card.closest('div').getAttribute('data-col');
+            RefreshCollected(collectionNumber)
         });
     });
 
@@ -307,13 +440,13 @@ export const categories = [
 			// console.log(idsOwned)
 
 			localStorage.setItem("owned", JSON.stringify(idsOwned));
-			let collectionNumber = item.closest('div')
+			let collectionNumber = item.getAttribute('data-col')
 			console.log('colnumber',collectionNumber)
-			RefreshCollected()
+			RefreshCollected(collectionNumber)
 		})
 	})
 
-	function RefreshCollected() {
+	function RefreshCollected(collectionNumber = 0) {
         const collections = document.querySelectorAll("[data-categorie]")
 		
 		cards.forEach((card) => {
@@ -326,15 +459,26 @@ export const categories = [
 				card.classList.remove("owned");
 			}
 		})
+		console.log(collectionNumber)
 		
 		collections.forEach((collection) => {
-			let sizeCollection = collection.dataset.size;
+			let sizeCollection = document.querySelectorAll(`.collection-${collection.dataset.categorie} .item`).length;
 			let collectionID = collection.dataset.categorie;
-			let colOwned = document.querySelectorAll(`.collection-${collectionID} .item.owned`)
-			
-			collection.innerHTML = `${colOwned.length} / ${sizeCollection}`
 
-			if (colOwned.length == sizeCollection) {
+			if(collectionNumber == 5){
+
+				console.log(collectionID)
+				console.log(sizeCollection)
+			}
+			let colOwned;
+			if(collectionNumber != 5)
+				colOwned = document.querySelectorAll(`.collection-${collectionID} .item.owned`)
+			else
+				colOwned = document.querySelectorAll(`.item_puzzle.owned`)
+
+			collection.innerHTML = `${colOwned.length} / ${sizeCollection}`
+			if(collectionNumber == collectionID && colOwned.length == sizeCollection) 
+			{
                 fireWorks()    
             }
 		});
@@ -387,7 +531,16 @@ export const categories = [
         }, 250);
     }
 
+	function toggleLoader(){
+		const loader = document.querySelector(".loader__container"),
+		body = document.body;
+
+		loader.classList.toggle("loader--active")
+		body.classList.toggle("loader--is--active")
+
+	}
+
 	RefreshCollected();
-	showTime();
+	//showTime();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>

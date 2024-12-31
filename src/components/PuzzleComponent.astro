@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 const { collectable } = Astro.props;
 ---
 
-<div class="item_puzzle" data-id={collectable.id}>
+<div class="item_puzzle" data-id={collectable.id} data-col={collectable.category}>
     <div class="imagen-fondo">
         <Image
             src={collectable.srcColor}
@@ -23,6 +23,6 @@ const { collectable } = Astro.props;
 
     .item_puzzle.owned {
         filter: grayscale(0);
-        border: 2.5px solid yellow;
+        border: 2.5px solid #00ff4e;
     }
 </style>

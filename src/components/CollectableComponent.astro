@@ -2,14 +2,12 @@
 // import Image from "astro/components/Image.astro";
 import { Image } from "astro:assets";
 const { collectable } = Astro.props;
-
-console.log(collectable)
 ---
 
 <div class="item" data-id={collectable.id} data-col={collectable.category}>
-	<img class="noise" src="../src/assets/img/bg.png" />
-	<img class="bateria" src="../src/assets/img/Vector.webp" />
-	<img class="bateria_full" src="../src/assets/img/Group.webp" />
+	<img class="noise" src="./bg.png" />
+	<img class="bateria" src="./Vector.webp" />
+	<img class="bateria_full" src="./Group.webp" />
 	<div class="recording"></div>
 	<div class="imagen-fondo">
 		<Image
@@ -35,9 +33,11 @@ console.log(collectable)
 		user-select: none;
 		.bateria_full {
 			display: none;
+			z-index: 1;
 		}
 		.bateria {
 			display: block;
+			z-index: 1;
 		}
 	}
 
@@ -51,7 +51,9 @@ console.log(collectable)
 
 	.item.owned {
 		.imagen-fondo img {
-			filter: drop-shadow(0 0 0.75rem #e4e132);
+			filter: drop-shadow(0 0 3rem #ffffff2b)
+				drop-shadow(0 0 0.8rem #b300386b)
+				drop-shadow(0 0 0.1rem #f7004da6);
 		}
 
 		.noise {
@@ -66,6 +68,8 @@ console.log(collectable)
 		}
 		.recording {
 			display: block;
+			z-index: 1;
+			position: absolute;
 		}
 	}
 
@@ -83,6 +87,7 @@ console.log(collectable)
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		background: radial-gradient(#00000040, #000000);
 		/* display: grid;
 		place-content: center; */
 
@@ -92,8 +97,8 @@ console.log(collectable)
 
 	.imagen-fondo img {
 		/* position: absolute; */
-		width: 70%;
-		height: 70%;
+		width: 80%;
+		height: 80%;
 		filter: grayscale(1);
 		object-fit: contain;
 	}
