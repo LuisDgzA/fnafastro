@@ -243,5 +243,175 @@
         "id": 1035,
         "srcColor": "../assets/images/row-5-column-7.png",
         "category": 5
+    },
+    {
+        "id": 201,
+        "srcColor": "../assets/images/lla1.png",
+        "category": 3
+    },
+    {
+        "id": 202,
+        "srcColor": "../assets/images/lla2.png",
+        "category": 3
+    },
+    {
+        "id": 203,
+        "srcColor": "../assets/images/lla3.png",
+        "category": 3
+    },
+    {
+        "id": 204,
+        "srcColor": "../assets/images/lla4.png",
+        "category": 3
+    },
+    {
+        "id": 205,
+        "srcColor": "../assets/images/lla5.png",
+        "category": 3
+    },
+    {
+        "id": 206,
+        "srcColor": "../assets/images/lla6.png",
+        "category": 3
+    },
+    {
+        "id": 207,
+        "srcColor": "../assets/images/lla7.png",
+        "category": 3
+    },
+    {
+        "id": 208,
+        "srcColor": "../assets/images/lla8.png",
+        "category": 3
+    },
+    {
+        "id": 209,
+        "srcColor": "../assets/images/lla9.png",
+        "category": 3
+    },
+    {
+        "id": 210,
+        "srcColor": "../assets/images/lla10.png",
+        "category": 3
+    },
+    {
+        "id": 211,
+        "srcColor": "../assets/images/lla11.png",
+        "category": 3
+    },
+    {
+        "id": 301,
+        "srcColor": "../assets/images/clip1.png",
+        "category": 4
+    },
+    {
+        "id": 302,
+        "srcColor": "../assets/images/clip2.png",
+        "category": 4
+    },
+    {
+        "id": 303,
+        "srcColor": "../assets/images/clip3.png",
+        "category": 4
+    },
+    {
+        "id": 304,
+        "srcColor": "../assets/images/clip4.png",
+        "category": 4
+    },
+    {
+        "id": 305,
+        "srcColor": "../assets/images/clip5.png",
+        "category": 4
+    },
+    {
+        "id": 306,
+        "srcColor": "../assets/images/clip6.png",
+        "category": 4
+    },
+    {
+        "id": 307,
+        "srcColor": "../assets/images/clip7.png",
+        "category": 4
+    },
+    {
+        "id": 308,
+        "srcColor": "../assets/images/clip8.png",
+        "category": 4
+    },
+    {
+        "id": 401,
+        "srcColor": "../assets/images/ventosa1.png",
+        "category": 6
+    },
+    {
+        "id": 402,
+        "srcColor": "../assets/images/ventosa2.png",
+        "category": 6
+    },
+    {
+        "id": 403,
+        "srcColor": "../assets/images/ventosa3.png",
+        "category": 6
+    },
+    {
+        "id": 404,
+        "srcColor": "../assets/images/ventosa4.png",
+        "category": 6
+    },
+    {
+        "id": 405,
+        "srcColor": "../assets/images/ventosa5.png",
+        "category": 6
+    },
+    {
+        "id": 406,
+        "srcColor": "../assets/images/ventosa6.png",
+        "category": 6
+    },
+    {
+        "id": 407,
+        "srcColor": "../assets/images/ventosa7.png",
+        "category": 6
+    },
+    {
+        "id": 408,
+        "srcColor": "../assets/images/ventosa8.png",
+        "category": 6
+    },
+    {
+        "id": 409,
+        "srcColor": "../assets/images/ventosa9.png",
+        "category": 6
+    },
+    {
+        "id": 410,
+        "srcColor": "../assets/images/ventosa10.png",
+        "category": 6
+    },
+    {
+        "id": 411,
+        "srcColor": "../assets/images/ventosa11.png",
+        "category": 6
+    },
+    {
+        "id": 412,
+        "srcColor": "../assets/images/ventosa12.png",
+        "category": 6
+    },
+    {
+        "id": 413,
+        "srcColor": "../assets/images/ventosa13.png",
+        "category": 6
+    },
+    {
+        "id": 414,
+        "srcColor": "../assets/images/ventosa14.png",
+        "category": 6
+    },
+    {
+        "id": 415,
+        "srcColor": "../assets/images/ventosa15.png",
+        "category": 6
     }
 ]
